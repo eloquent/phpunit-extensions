@@ -59,3 +59,14 @@ class ExampleTest extends ParameterizedTestCase
 
 Every test in the testcase will now be run once for each entry in the
 `getTestCaseParameters()` method.
+
+## Code quality
+
+PHPUnit extensions strives to attain a high level of quality. A full test suite
+is available, and code coverage is closely monitored.
+
+### Latest revision test suite results
+[![Build Status](https://secure.travis-ci.org/ezzatron/phpunit-extensions.png)](http://travis-ci.org/ezzatron/phpunit-extensions)
+
+### Latest revision test suite coverage
+<http://ci.ezzatron.com/report/phpunit-extensions/coverage/>
