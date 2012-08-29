@@ -1,0 +1,23 @@
+{
+    "name": "ezzatron/phpunit-extensions",
+    "description": "Extensions for PHPUnit to provide additional functionality.",
+    "keywords": ["phpunit","extension","test","testing","case","parameterized"],
+    "homepage": "https://github.com/ezzatron/phpunit-extensions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erin Millard",
+            "email": "ezzatron@gmail.com",
+            "homepage": "http://ezzatron.com/"
+        }
+    ],
+    "require-dev": {
+        "eloquent/liberator": ">=1.1,<2",
+        "phake/phake": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ezzatron\\PHPUnit": "src"
+        }
+    }
+}

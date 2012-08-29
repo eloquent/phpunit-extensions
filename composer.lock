@@ -1,0 +1,27 @@
+{
+    "hash": "824149fb03e97631568479440a1aa234",
+    "packages": [
+
+    ],
+    "packages-dev": [
+        {
+            "package": "eloquent/liberator",
+            "version": "1.1.0"
+        },
+        {
+            "package": "eloquent/pops",
+            "version": "3.1.0"
+        },
+        {
+            "package": "phake/phake",
+            "version": "v1.0.3"
+        }
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}
