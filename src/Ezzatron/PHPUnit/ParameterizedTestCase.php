@@ -18,16 +18,6 @@ use ReflectionObject;
 
 abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
 {
-    public function __construct(
-        $name = null,
-        array $data = array(),
-        $dataName = ''
-    ) {
-        $this->reflector = new ReflectionObject($this);
-
-        parent::__construct($name, $data, $dataName);
-    }
-
     /**
      * @return integer
      */
@@ -46,21 +36,26 @@ abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
         if (null === $result) {
             $result = $this->createResult();
         }
+        $reflector = $this->getReflector();
 
         foreach ($this->getTestCaseParameters() as $arguments) {
             if (!is_array($arguments)) {
                 throw new LogicException('Invalid test case parameters.');
             }
 
-            $this->reflector->getMethod('setUpParameterized')
-                ->invokeArgs($this, $arguments)
-            ;
+            if ($reflector->hasMethod('setUpParameterized')) {
+                $reflector->getMethod('setUpParameterized')
+                    ->invokeArgs($this, $arguments)
+                ;
+            }
 
             parent::run($result);
 
-            $this->reflector->getMethod('tearDownParameterized')
-                ->invokeArgs($this, $arguments)
-            ;
+            if ($reflector->hasMethod('tearDownParameterized')) {
+                $reflector->getMethod('tearDownParameterized')
+                    ->invokeArgs($this, $arguments)
+                ;
+            }
         }
 
         return $result;
@@ -71,12 +66,16 @@ abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
      */
     abstract public function getTestCaseParameters();
 
-    public function setUpParameterized()
+    /**
+     * @return ReflectionObject
+     */
+    protected function getReflector()
     {
-    }
+        if (null === $this->reflector) {
+            $this->reflector = new ReflectionObject($this);
+        }
 
-    public function tearDownParameterized()
-    {
+        return $this->reflector;
     }
 
     protected $reflector;

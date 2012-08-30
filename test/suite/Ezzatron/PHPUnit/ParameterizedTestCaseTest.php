@@ -14,77 +14,89 @@ namespace Ezzatron\PHPUnit;
 use Eloquent\Liberator\Liberator;
 use Phake;
 use PHPUnit_Framework_TestCase;
+use ReflectionObject;
 
 class ParameterizedTestCaseTest extends PHPUnit_Framework_TestCase
 {
-    public function testConstructor()
+    protected function setUp()
     {
-        $testCase = Phake::partialMock(
-            __NAMESPACE__.'\ParameterizedTestCase',
-            'foo',
-            array('bar', 'baz'),
-            'qux'
-        );
+        parent::setUp();
 
-        $this->assertSame('foo with data set "qux"', $testCase->getName());
-        $this->assertSame(array('bar', 'baz'), Liberator::liberate($testCase)->data);
+        $this->_testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
+        $this->_reflector = Phake::mock('ReflectionObject');
+        Phake::when($this->_testCase)->getReflector()->thenReturn($this->_reflector);
+        $this->_setUpMethod = Phake::mock('ReflectionMethod');
+        Phake::when($this->_reflector)->hasMethod('setUpParameterized')->thenReturn(true);
+        Phake::when($this->_reflector)->getMethod('setUpParameterized')->thenReturn($this->_setUpMethod);
+        $this->_tearDownMethod = Phake::mock('ReflectionMethod');
+        Phake::when($this->_reflector)->hasMethod('tearDownParameterized')->thenReturn(true);
+        Phake::when($this->_reflector)->getMethod('tearDownParameterized')->thenReturn($this->_tearDownMethod);
     }
 
-    public function testCount()
+    public function testCountOne()
     {
-        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
-        Phake::when($testCase)->getTestCaseParameters()->thenReturn(array(
+        Phake::when($this->_testCase)->getTestCaseParameters()->thenReturn(array(
             array(),
         ));
 
-        $this->assertSame(1, $testCase->count());
+        $this->assertSame(1, $this->_testCase->count());
+    }
 
-
-        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
-        Phake::when($testCase)->getTestCaseParameters()->thenReturn(array(
+    public function testCountTwo()
+    {
+        Phake::when($this->_testCase)->getTestCaseParameters()->thenReturn(array(
             array(),
             array(),
         ));
 
-        $this->assertSame(2, $testCase->count());
+        $this->assertSame(2, $this->_testCase->count());
     }
 
     public function testRun()
     {
-        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
-        Phake::when($testCase)->getTestCaseParameters()->thenReturn(array(
+        Phake::when($this->_testCase)->getTestCaseParameters()->thenReturn(array(
             array('foo', 'bar'),
             array('baz', 'qux'),
             array('doom', 'splat'),
         ));
         $result = Phake::mock('PHPUnit_Framework_TestResult');
 
-        $this->assertSame($result, $testCase->run($result));
+        $this->assertSame($result, $this->_testCase->run($result));
         Phake::inOrder(
-            Phake::verify($testCase)->getTestCaseParameters(),
-            Phake::verify($testCase)->setUpParameterized('foo', 'bar'),
-            Phake::verify($testCase)->tearDownParameterized('foo', 'bar'),
-            Phake::verify($testCase)->setUpParameterized('baz', 'qux'),
-            Phake::verify($testCase)->tearDownParameterized('baz', 'qux'),
-            Phake::verify($testCase)->setUpParameterized('doom', 'splat'),
-            Phake::verify($testCase)->tearDownParameterized('doom', 'splat')
+            Phake::verify($this->_testCase)->getTestCaseParameters(),
+            Phake::verify($this->_setUpMethod)->invokeArgs($this->_testCase, array('foo', 'bar')),
+            Phake::verify($this->_tearDownMethod)->invokeArgs($this->_testCase, array('foo', 'bar')),
+            Phake::verify($this->_setUpMethod)->invokeArgs($this->_testCase, array('baz', 'qux')),
+            Phake::verify($this->_tearDownMethod)->invokeArgs($this->_testCase, array('baz', 'qux')),
+            Phake::verify($this->_setUpMethod)->invokeArgs($this->_testCase, array('doom', 'splat')),
+            Phake::verify($this->_tearDownMethod)->invokeArgs($this->_testCase, array('doom', 'splat'))
         );
     }
 
     public function testRunCreateResult()
     {
-        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
-        Phake::when($testCase)->getTestCaseParameters()->thenReturn(array());
+        Phake::when($this->_testCase)->getTestCaseParameters()->thenReturn(array());
 
-        $this->assertInstanceOf('PHPUnit_Framework_TestResult', $testCase->run());
+        $this->assertInstanceOf('PHPUnit_Framework_TestResult', $this->_testCase->run());
     }
 
     public function testRunInvalidDataFailure()
     {
-        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
-        Phake::when($testCase)->getTestCaseParameters()->thenReturn(array('foo'));
+        Phake::when($this->_testCase)->getTestCaseParameters()->thenReturn(array('foo'));
 
         $this->setExpectedException('LogicException', 'Invalid test case parameters.');
-        $testCase->run();
+        $this->_testCase->run();
+    }
+
+    public function testGetReflector()
+    {
+        $testCase = Phake::partialMock(__NAMESPACE__.'\ParameterizedTestCase');
+        $testCaseReflector = new ReflectionObject($testCase);
+        $testCaseClass = $testCaseReflector->getName();
+        $actual = Liberator::liberate($testCase)->getReflector();
+
+        $this->assertInstanceOf('ReflectionObject', $actual);
+        $this->assertSame($testCaseClass, $actual->getName());
+        $this->assertSame($actual, Liberator::liberate($testCase)->getReflector());
     }
 }
