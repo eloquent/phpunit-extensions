@@ -1,0 +1,8 @@
+TAP version 13
+ok 1 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testCountOne
+ok 2 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testCountTwo
+ok 3 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testRun
+ok 4 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testRunCreateResult
+ok 5 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testRunInvalidDataFailure
+ok 6 - Ezzatron\PHPUnit\ParameterizedTestCaseTest::testGetReflector
+1..6
