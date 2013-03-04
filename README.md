@@ -2,18 +2,13 @@
 
 *Extensions for PHPUnit to provide additional functionality.*
 
+[![Build Status]](http://travis-ci.org/ezzatron/phpunit-extensions)
+[![Test Coverage]](http://ezzatron-software.com/phpunit-extensions/artifacts/tests/coverage/)
+
 ## Installation
 
-### With [Composer](http://getcomposer.org/)
-
-* Add 'ezzatron/phpunit-extensions' to the project's composer.json dev dependencies
-* Run `composer update --dev`
-
-### Bare installation
-
-* Clone from GitHub: `git clone git://github.com/ezzatron/phpunit-extensions.git`
-* Use a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
-  compatible autoloader (namespace 'Ezzatron\PHPUnit' in the 'src' directory)
+Available as [Composer](http://getcomposer.org/) package
+[ezzatron/phpunit-extensions](https://packagist.org/packages/ezzatron/phpunit-extensions).
 
 ## Parameterized test cases
 
@@ -26,8 +21,6 @@ To create a parameterized test case, extend the `ParameterizedTestCase` class
 instead of `PHPUnit_Framework_TestCase`, and implement the required methods:
 
 ```php
-<?php
-
 use Ezzatron\PHPUnit\ParameterizedTestCase;
 
 class ExampleTest extends ParameterizedTestCase
@@ -60,13 +53,6 @@ class ExampleTest extends ParameterizedTestCase
 Every test in the testcase will now be run once for each entry in the
 `getTestCaseParameters()` method.
 
-## Code quality
-
-PHPUnit extensions strives to attain a high level of quality. A full test suite
-is available, and code coverage is closely monitored.
-
-### Latest revision test suite results
-[![Build Status](https://secure.travis-ci.org/ezzatron/phpunit-extensions.png)](http://travis-ci.org/ezzatron/phpunit-extensions)
-
-### Latest revision test suite coverage
-<http://ci.ezzatron.com/report/phpunit-extensions/coverage/>
+<!-- references -->
+[Build Status]: https://raw.github.com/ezzatron/phpunit-extensions/gh-pages/artifacts/images/icecave/regular/build-status.png
+[Test Coverage]: https://raw.github.com/ezzatron/phpunit-extensions/gh-pages/artifacts/images/icecave/regular/coverage.png
