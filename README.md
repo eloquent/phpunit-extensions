@@ -1,27 +1,27 @@
-# Ezzatron's PHPUnit extensions
+# PHPUnit extensions
 
 *Extensions for PHPUnit to provide additional functionality.*
 
-[![Build Status]](http://travis-ci.org/ezzatron/phpunit-extensions)
-[![Test Coverage]](http://ezzatron-software.com/phpunit-extensions/artifacts/tests/coverage/)
+[![The most recent stable version is 2.0.0][version-image]][Semantic versioning]
+[![Current build status image][build-image]][Current build status]
+[![Current coverage status image][coverage-image]][Current coverage status]
 
-## Installation
+## Installation and documentation
 
-Available as [Composer](http://getcomposer.org/) package
-[ezzatron/phpunit-extensions](https://packagist.org/packages/ezzatron/phpunit-extensions).
+- Available as [Composer] package [eloquent/phpunit-extensions].
+- [API documentation] available.
 
 ## Parameterized test cases
 
 Parameterized test cases allow entire PHPUnit test cases to be run in multiple
-different configurations. They operate similar to PHPUnit's own
-[data providers](http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers),
-but on a test case level rather than a test method level.
+different configurations. They operate similar to PHPUnit's own [data
+providers], but on a test case level rather than a test method level.
 
 To create a parameterized test case, extend the `ParameterizedTestCase` class
 instead of `PHPUnit_Framework_TestCase`, and implement the required methods:
 
 ```php
-use Ezzatron\PHPUnit\ParameterizedTestCase;
+use Eloquent\Phpunit\ParameterizedTestCase;
 
 class ExampleTest extends ParameterizedTestCase
 {
@@ -53,6 +53,16 @@ class ExampleTest extends ParameterizedTestCase
 Every test in the testcase will now be run once for each entry in the
 `getTestCaseParameters()` method.
 
-<!-- references -->
-[Build Status]: https://raw.github.com/ezzatron/phpunit-extensions/gh-pages/artifacts/images/icecave/regular/build-status.png
-[Test Coverage]: https://raw.github.com/ezzatron/phpunit-extensions/gh-pages/artifacts/images/icecave/regular/coverage.png
+<!-- References -->
+
+[data providers]: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers
+
+[API documentation]: http://lqnt.co/phpunit-extensions/artifacts/documentation/api/
+[Composer]: http://getcomposer.org/
+[build-image]: http://img.shields.io/travis/eloquent/phpunit-extensions/develop.svg "Current build status for the develop branch"
+[Current build status]: https://travis-ci.org/eloquent/phpunit-extensions
+[coverage-image]: http://img.shields.io/coveralls/eloquent/phpunit-extensions/develop.svg "Current test coverage for the develop branch"
+[Current coverage status]: https://coveralls.io/r/eloquent/phpunit-extensions
+[eloquent/phpunit-extensions]: https://packagist.org/packages/eloquent/phpunit-extensions
+[Semantic versioning]: http://semver.org/
+[version-image]: http://img.shields.io/:semver-2.0.0-brightgreen.svg "This project uses semantic versioning"

@@ -1,8 +1,8 @@
 {
-    "name": "ezzatron/phpunit-extensions",
+    "name": "eloquent/phpunit-extensions",
     "description": "Extensions for PHPUnit to provide additional functionality.",
-    "keywords": ["phpunit","extension","test","testing","case","parameterized"],
-    "homepage": "https://github.com/ezzatron/phpunit-extensions",
+    "keywords": ["phpunit", "extension", "test", "testing", "case", "parameterized"],
+    "homepage": "https://github.com/eloquent/phpunit-extensions",
     "license": "MIT",
     "authors": [
         {
@@ -12,12 +12,13 @@
         }
     ],
     "require-dev": {
-        "eloquent/liberator": "~1.1",
-        "icecave/archer": "~0.2"
+        "eloquent/liberator": "~2",
+        "icecave/archer": "~1",
+        "phpunit/phpunit": "~3"
     },
     "autoload": {
-        "psr-0": {
-            "Ezzatron\\PHPUnit": "src"
+        "psr-4": {
+            "Eloquent\\Phpunit\\": "src"
         }
     }
 }

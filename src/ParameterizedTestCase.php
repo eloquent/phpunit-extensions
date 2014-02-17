@@ -3,23 +3,28 @@
 /*
  * This file is part of the PHPUnit extensions package.
  *
- * Copyright © 2013 Erin Millard
+ * Copyright © 2014 Erin Millard
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
 
-namespace Ezzatron\PHPUnit;
+namespace Eloquent\Phpunit;
 
 use LogicException;
 use PHPUnit_Framework_TestCase;
 use PHPUnit_Framework_TestResult;
 use ReflectionObject;
 
+/**
+ * A test case for creating parameterized tests.
+ */
 abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
 {
     /**
-     * @return integer
+     * Counts the number of test cases executed by run(TestResult result).
+     *
+     * @return integer The number of test cases to run.
      */
     public function count()
     {
@@ -27,9 +32,14 @@ abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param PHPUnit_Framework_TestResult|null $result
+     * Runs the test case and collects the results in a TestResult object. If no
+     * TestResult object is passed a new one will be created.
      *
-     * @return PHPUnit_Framework_TestResult
+     * @param PHPUnit_Framework_TestResult|null $result The test result to use.
+     *
+     * @return PHPUnit_Framework_TestResult The test result.
+     * @throws PHPUnit_Framework_Exception  If the test case cannot be run.
+     * @throws LogicException               If the test case parameters are invalid.
      */
     public function run(PHPUnit_Framework_TestResult $result = null)
     {
@@ -62,12 +72,18 @@ abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return array<integer,array<integer,mixed>>
+     * Get the test case parameters to use.
+     *
+     * Each row will cause an extra invocation of each test in the test case.
+     *
+     * @return array<integer,array<integer,mixed>> The test case parameters.
      */
     abstract public function getTestCaseParameters();
 
     /**
-     * @return ReflectionObject
+     * Get the reflector for this test case.
+     *
+     * @return ReflectionObject The test case reflector.
      */
     protected function getReflector()
     {
@@ -78,5 +94,5 @@ abstract class ParameterizedTestCase extends PHPUnit_Framework_TestCase
         return $this->reflector;
     }
 
-    protected $reflector;
+    private $reflector;
 }
