@@ -1,0 +1,7 @@
+var search_data = {
+    'index': {
+        'searchIndex': ["eloquent","eloquent\\phpunit","eloquent\\phpunit\\parameterizedtestcase","eloquent\\phpunit\\parameterizedtestcase::count","eloquent\\phpunit\\parameterizedtestcase::run","eloquent\\phpunit\\parameterizedtestcase::gettestcaseparameters"],
+        'info': [["Eloquent","","Eloquent.html","","",3],["Eloquent\\Phpunit","","Eloquent\/Phpunit.html","","",3],["ParameterizedTestCase","Eloquent\\Phpunit","Eloquent\/Phpunit\/ParameterizedTestCase.html"," < PHPUnit_Framework_TestCase","A test case for creating parameterized tests.",1],["ParameterizedTestCase::count","Eloquent\\Phpunit\\ParameterizedTestCase","Eloquent\/Phpunit\/ParameterizedTestCase.html#method_count","()","Counts the number of test cases executed by run(TestResult",2],["ParameterizedTestCase::run","Eloquent\\Phpunit\\ParameterizedTestCase","Eloquent\/Phpunit\/ParameterizedTestCase.html#method_run","(<abbr title=\"PHPUnit_Framework_TestResult\">PHPUnit_Framework_TestResult<\/abbr> $result = null)","Runs the test case and collects the results in a TestResult",2],["ParameterizedTestCase::getTestCaseParameters","Eloquent\\Phpunit\\ParameterizedTestCase","Eloquent\/Phpunit\/ParameterizedTestCase.html#method_getTestCaseParameters","()","Get the test case parameters to use.",2]]
+    }
+}
+search_data['index']['longSearchIndex'] = search_data['index']['searchIndex']

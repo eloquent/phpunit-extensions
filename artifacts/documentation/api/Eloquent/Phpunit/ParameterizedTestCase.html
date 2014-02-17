@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>Eloquent\Phpunit\ParameterizedTestCase | eloquent/phpunit-extensions API</title>
+                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../classes.html">Classes</a></li>
+                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title">eloquent/phpunit-extensions API</div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../Eloquent/Phpunit.html">Eloquent\Phpunit</a>\ParameterizedTestCase</h1>
+    </div>
+        <div class="content">
+                <p>abstract class    <strong>ParameterizedTestCase</strong>        extends <abbr title="PHPUnit_Framework_TestCase">PHPUnit_Framework_TestCase</abbr></p>
+
+            <div class="description">
+            <p>A test case for creating parameterized tests.</p>
+            <p>
+</p>
+        </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    integer
+                </td>
+                <td class="last">
+                    <a href="#method_count">count</a>()
+                    <p>Counts the number of test cases executed by run(TestResult result).</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>
+                </td>
+                <td class="last">
+                    <a href="#method_run">run</a>(<abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr> $result = null)
+                    <p>Runs the test case and collects the results in a TestResult object.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <abbr title="Eloquent\Phpunit\array&lt;integer,array&lt;integer,mixed&gt;&gt;">array&lt;integer,array&lt;integer,mixed&gt;&gt;</abbr>
+                </td>
+                <td class="last">
+                    <a href="#method_getTestCaseParameters">getTestCaseParameters</a>()
+                    <p>Get the test case parameters to use.</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method_count">
+        <div class="location">at line 29</div>
+        <code>            public            integer
+    <strong>count</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Counts the number of test cases executed by run(TestResult result).</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>integer</td>
+            <td>The number of test cases to run.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_run">
+        <div class="location">at line 44</div>
+        <code>            public            <abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>
+    <strong>run</strong>(<abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr> $result = null)</code>
+    </h3>
+    <div class="details">
+        <p>Runs the test case and collects the results in a TestResult object.</p>
+        <p>If no
+TestResult object is passed a new one will be created.</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr></td>
+                <td>$result</td>
+                <td>The test result to use.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr></td>
+            <td>The test result.</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="PHPUnit_Framework_Exception">PHPUnit_Framework_Exception</abbr></td>
+                <td>If the test case cannot be run.</td>
+            </tr>
+                    <tr>
+                <td><a href="http://php.net/LogicException"><abbr title="LogicException">LogicException</abbr></a></td>
+                <td>If the test case parameters are invalid.</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getTestCaseParameters">
+        <div class="location">at line 81</div>
+        <code>    abstract        public            <abbr title="Eloquent\Phpunit\array&lt;integer,array&lt;integer,mixed&gt;&gt;">array&lt;integer,array&lt;integer,mixed&gt;&gt;</abbr>
+    <strong>getTestCaseParameters</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Get the test case parameters to use.</p>
+        <p>Each row will cause an extra invocation of each test in the test case.</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><abbr title="Eloquent\Phpunit\array&lt;integer,array&lt;integer,mixed&gt;&gt;">array&lt;integer,array&lt;integer,mixed&gt;&gt;</abbr></td>
+            <td>The test case parameters.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>
