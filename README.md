@@ -1,4 +1,4 @@
-# Ezzatron's PHPUnit extensions
+# PHPUnit extensions
 
 *Extensions for PHPUnit to provide additional functionality.*
 
