@@ -2,7 +2,7 @@
 
 *Extensions for PHPUnit to provide additional functionality.*
 
-[![The most recent stable version is 1.0.2][version-image]][Semantic versioning]
+[![The most recent stable version is 2.0.0][version-image]][Semantic versioning]
 [![Current build status image][build-image]][Current build status]
 [![Current coverage status image][coverage-image]][Current coverage status]
 
@@ -65,4 +65,4 @@ Every test in the testcase will now be run once for each entry in the
 [Current coverage status]: https://coveralls.io/r/eloquent/phpunit-extensions
 [eloquent/phpunit-extensions]: https://packagist.org/packages/eloquent/phpunit-extensions
 [Semantic versioning]: http://semver.org/
-[version-image]: http://img.shields.io/:semver-1.0.2-brightgreen.svg "This project uses semantic versioning"
+[version-image]: http://img.shields.io/:semver-2.0.0-brightgreen.svg "This project uses semantic versioning"
